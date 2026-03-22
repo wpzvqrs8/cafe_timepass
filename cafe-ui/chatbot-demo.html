@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n Chatbot Demo</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: #111827;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* n8n Chat Widget Styles */
+        link[href*="@n8n/chat"] {
+            display: none; /* Just for cleanliness */
+        }
+    </style>
+
+    <!-- 1. Include n8n Chat CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="demo-container">
+        <h1>Cafe Assistant Demo</h1>
+        <p>
+            This is a standalone demo page for your n8n chatbot. 
+            Click the chat bubble icon in the bottom right corner to start chatting with your AI assistant!
+        </p>
+    </div>
+
+    <!-- 2. Initialize the n8n Chat Widget -->
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            webhookUrl: 'https://bhavyyy.app.n8n.cloud/webhook/f406671e-c954-4691-b39a-66c90aa2f103/chat',
+            initialMessages: [
+                "Hi there! Welcome to our cafe! How can I help you today?"
+            ]
+        });
+    </script>
+</body>
+</html>

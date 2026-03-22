@@ -5,9 +5,58 @@
     <link rel="icon" type="image/svg+xml" href="/coffee.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Antigraboty Cafe</title>
+    
+    <!-- n8n Chat CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <style>
+      /* N8N Chatbot Theme Overrides to match Cafe's "Warm Brutalism" vibe */
+      :root {
+        --chat--color-primary: #C8763A; /* Cafe Primary Accent */
+        --chat--color-primary-shade-50: #E8935A;
+        
+        --chat--color-secondary: #1C1410; /* Cafe Surface color for messages */
+        --chat--color-secondary-shade-50: #2A1F18;
+        
+        /* Invert standard colors to force a dark mode aesthetic inside the widget */
+        --chat--color-white: #0E0A07; /* Chat background becomes Cafe Background */
+        --chat--color-light: #1C1410; /* Input area background */
+        --chat--color-dark: #F5EFE6; /* Text color */
+        
+        --chat--color-text-dark: #0E0A07; /* Text on primary color (e.g. orange buttons) */
+        --chat--color-text-light: #F5EFE6; /* Text on dark backgrounds */
+        
+        --chat--border-radius: 4px; /* Brutalist sharp curves */
+        --chat--spacing: 0.8rem;
+        
+        /* Use the cafe's beautiful typography */
+        --chat--font-family: inherit; 
+      }
+      
+      /* Additional specific style overrides to force the dark mode to look clean */
+      .chat-layout { 
+        border: 1px solid #2A1F18 !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+      }
+      .chat-message-text {
+        font-family: "DM Sans", "Söhne", sans-serif;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Map n8n Chat Widget -->
+    <script type="module">
+      import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+      createChat({
+        webhookUrl: 'https://bhavyyy.app.n8n.cloud/webhook/f406671e-c954-4691-b39a-66c90aa2f103/chat',
+        initialMessages: [
+          'Welcome to the Antigraboty Cafe! ☕',
+          'I am your digital host. I can help you browse our menu, book a table, or answer questions about our locally crafted coffees. How can I help?'
+        ]
+      });
+    </script>
   </body>
 </html>
